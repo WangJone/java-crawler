@@ -36,7 +36,7 @@ public Crawling() {
         connection.setDoOutput(true);
         connection.setConnectTimeout(10*1000);
         if(method!=null) {
-             connection.setRequestMethod(method.toUpperCase());
+             connection.setRequestMethod(method);
              //Set request header
              if (!map.isEmpty()) {
                  for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -44,7 +44,7 @@ public Crawling() {
                  }
              }
              //Send or get the data
-             byte [] data = jsonObject.toString().getBytes();
+             byte [] data = jsonObject.getBytes();
              OutputStream outputStream =  connection.getOutputStream();
              outputStream.write(data);
              outputStream.flush();
